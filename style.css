@@ -67,18 +67,6 @@
     --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Light theme variables */
-[data-theme="light"] {
-    --bg-primary: #ffffff;
-    --bg-secondary: #f8fafc;
-    --bg-tertiary: #f1f5f9;
-    --text-primary: #1e293b;
-    --text-secondary: #475569;
-    --text-muted: #64748b;
-    --glass-bg: rgba(255, 255, 255, 0.7);
-    --glass-border: rgba(0, 0, 0, 0.1);
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
 
 /* Reset and base styles */
 * {
