@@ -95,6 +95,7 @@ class PortfolioApp {
 
     async init() {
         this.setupEventListeners();
+
         this.initTheme();
         this.initTypingEffect();
         this.initScrollAnimations();
@@ -132,13 +133,6 @@ class PortfolioApp {
                 }
             }
         });
-
-        // Theme toggle
-        const themeToggle = document.getElementById('themeToggle');
-        if (themeToggle) {
-            themeToggle.addEventListener('click', () => this.toggleTheme());
-        }
-
         // Mobile menu toggle
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         if (mobileMenuToggle) {
@@ -211,54 +205,18 @@ class PortfolioApp {
         });
     }
 
-    initTheme() {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            this.isDarkTheme = savedTheme === 'dark';
-        } else {
-            // Check system preference
-            this.isDarkTheme = !window.matchMedia('(prefers-color-scheme: light)').matches;
-        }
+   initTheme() {
+    this.isDarkTheme = true;
+}
 
-        this.applyTheme();
-    }
-
-    toggleTheme() {
-        this.isDarkTheme = !this.isDarkTheme;
-        this.applyTheme();
-    }
+    // toggleTheme() {
+    //     this.isDarkTheme = !this.isDarkTheme;
+    //     this.applyTheme();
+    // }
 
     applyTheme() {
-        const themeToggle = document.getElementById('themeToggle');
-        const profileImage = document.querySelector('.profile-image');
-        
-        if (this.isDarkTheme) {
-            document.documentElement.removeAttribute('data-theme');
-            if (themeToggle) {
-                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-            }
-            // Set dark theme profile picture with smooth transition
-            if (profileImage) {
-                this.switchProfileImage(profileImage, './assets/ele/profile_pic.png', 'Tirth Patel - Developer Illustration (Dark Theme)', 'brightness(0.7) contrast(1.1) hue-rotate(0) saturate(1)');
-                // this.switchProfileImage(profileImage, './assets/ele/profile1.jpg', 'Tirth Patel - Developer Illustration (Dark Theme)', 'brightness(0.7) contrast(1.1) hue-rotate(0) saturate(1)');
-                // this.switchProfileImage(profileImage, './assets/ele/profile_pic.jpg', 'Tirth Patel - Developer Illustration (Dark Theme)', 'none');
-
-            }
-        } else {
-            document.documentElement.setAttribute('data-theme', 'light');
-            if (themeToggle) {
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-            }
-            // Set light theme profile picture with smooth transition
-            if (profileImage) {
-                // this.switchProfileImage(profileImage, './assets/ele/profile_graba1.jpg', 'Tirth Patel - Developer Illustration (Light Theme)', 'none');
-                this.switchProfileImage(profileImage, './assets/ele/profile2.jpg', 'Tirth Patel - Developer Illustration (Light Theme)', 'none');
-            }
-        }
-        
-        // Store theme preference
-        localStorage.setItem('theme', this.isDarkTheme ? 'dark' : 'light');
-    }
+    document.documentElement.removeAttribute('data-theme');
+}
 
     switchProfileImage(imageElement, newSrc, newAlt, filterStyle = 'none') {
         // Create a smooth cross-fade effect
@@ -1045,7 +1003,6 @@ class PortfolioApp {
             data.append(key, value);
         }
 
-        // Submit to Netlify
         fetch('/', {
             method: 'POST',
             headers: {
