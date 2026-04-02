@@ -269,7 +269,7 @@ class PortfolioApp {
         if (!typingText) return;
 
         const roles = [
-            'Cyber Securiy Enthusiast',
+            'Cyber Security Enthusiast',
             'AI Enthusiast',
             'Problem Solver',
             'Creative Thinker',
